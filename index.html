@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Kapaleshwar Mushroom  – Home</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+  /* ── HERO ── */
+  .hero{min-height:100vh;display:flex;align-items:center;padding:7rem 5rem 4rem;position:relative;overflow:hidden;
+    background:radial-gradient(ellipse at 10% 60%,rgba(45,106,79,0.4) 0%,transparent 50%),
+               radial-gradient(ellipse at 90% 10%,rgba(82,183,136,0.15) 0%,transparent 45%),
+               linear-gradient(160deg,#071209 0%,#0a0f0a 50%,#071209 100%);}
+  .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1200px;margin:0 auto;width:100%;z-index:2;}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:0.6rem;background:rgba(82,183,136,0.08);border:1px solid rgba(82,183,136,0.25);color:var(--gl);padding:0.45rem 1.1rem;border-radius:50px;font-size:0.78rem;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:1.8rem;animation:fadeInUp 0.7s ease both;}
+  .hero-eyebrow-dot{width:6px;height:6px;background:var(--gl);border-radius:50%;animation:blink 1.5s ease-in-out infinite;}
+  @keyframes blink{0%,100%{opacity:1;}50%{opacity:0.2;}}
+  .hero-title{font-family:'Playfair Display',serif;font-size:clamp(3rem,5.5vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:1.8rem;}
+  .hero-title em{font-style:italic;color:var(--gl);}
+  .word{display:inline-block;opacity:0;transform:translateY(40px);animation:wordReveal 0.7s cubic-bezier(0.175,0.885,0.32,1.275) forwards;margin-right:0.2em;}
+  .word:nth-child(1){animation-delay:0.3s;}.word:nth-child(2){animation-delay:0.5s;}.word:nth-child(3){animation-delay:0.7s;}.word:nth-child(4){animation-delay:0.9s;}
+  @keyframes wordReveal{to{opacity:1;transform:translateY(0);}}
+  .hero-sub{font-size:1.05rem;color:rgba(255,255,255,0.6);line-height:1.8;margin-bottom:2.8rem;max-width:460px;opacity:0;animation:fadeInUp 0.8s ease 1.1s forwards;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;opacity:0;animation:fadeInUp 0.8s ease 1.3s forwards;}
+  .hero-badges{display:flex;gap:1rem;margin-top:2.5rem;flex-wrap:wrap;opacity:0;animation:fadeInUp 0.8s ease 1.5s forwards;}
+  .hero-badge{display:flex;align-items:center;gap:0.5rem;font-size:0.8rem;color:rgba(255,255,255,0.55);}
+  .hero-badge-icon{font-size:1rem;}
+
+  /* Visual side */
+  .hero-visual{position:relative;display:flex;align-items:center;justify-content:center;height:480px;}
+  .glow-orb{position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(45,106,79,0.35) 0%,transparent 70%);animation:orbPulse 5s ease-in-out infinite;}
+  @keyframes orbPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.12);}}
+  .hero-ring{width:320px;height:320px;border-radius:50%;border:1px solid rgba(82,183,136,0.2);display:flex;align-items:center;justify-content:center;position:relative;animation:ringFloat 6s ease-in-out infinite;}
+  @keyframes ringFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-16px);}}
+  .hero-ring::before{content:'';position:absolute;inset:-18px;border-radius:50%;border:1px solid rgba(82,183,136,0.1);animation:ringPulse 4s ease-in-out infinite;}
+  .hero-ring::after{content:'';position:absolute;inset:-36px;border-radius:50%;border:1px solid rgba(82,183,136,0.05);animation:ringPulse 4s ease-in-out 1s infinite;}
+  @keyframes ringPulse{0%,100%{transform:scale(1);}50%{transform:scale(1.05);}}
+  .hero-mush{font-size:9rem;filter:drop-shadow(0 0 50px rgba(82,183,136,0.6));animation:mushBob 5s ease-in-out infinite;}
+  @keyframes mushBob{0%,100%{transform:rotate(-4deg) scale(1);}50%{transform:rotate(4deg) scale(1.05) translateY(-8px);}}
+  .orbit{position:absolute;width:100%;height:100%;animation:orbitSpin 14s linear infinite;}
+  .orbit-dot{position:absolute;top:-14px;left:50%;transform:translateX(-50%);font-size:1.6rem;filter:drop-shadow(0 0 8px rgba(82,183,136,0.5));}
+  @keyframes orbitSpin{to{transform:rotate(360deg);}}
+  .orbit2{animation-duration:20s;animation-direction:reverse;}
+  .orbit2 .orbit-dot{top:auto;bottom:-14px;font-size:1.2rem;}
+  .orbit3{animation-duration:10s;}
+  .orbit3 .orbit-dot{top:50%;left:-14px;transform:translateY(-50%);font-size:1rem;}
+  .float-card{position:absolute;background:rgba(255,255,255,0.05);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:0.8rem 1.2rem;font-size:0.82rem;font-weight:600;white-space:nowrap;animation:cardFloat 4s ease-in-out infinite;}
+  .float-card.c1{top:8%;right:-5%;animation-delay:0s;}
+  .float-card.c2{bottom:12%;left:-8%;animation-delay:2s;}
+  @keyframes cardFloat{0%,100%{transform:translateY(0);}50%{transform:translateY(-10px);}}
+  .scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;color:rgba(255,255,255,0.3);font-size:0.72rem;letter-spacing:2px;text-transform:uppercase;}
+  .scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--gl));animation:scrollAnim 1.8s ease-in-out infinite;}
+  @keyframes scrollAnim{0%,100%{opacity:0.3;transform:scaleY(0.5);}50%{opacity:1;transform:scaleY(1);}}
+
+  /* ── Featured ── */
+  .featured{padding:6rem 5rem;background:#0a0f0a;position:relative;}
+  .featured::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(82,183,136,0.3),transparent);}
+  .featured-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;max-width:1100px;margin:0 auto;}
+  .featured-card{background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.07);border-radius:24px;padding:2.2rem;text-align:center;transition:all 0.5s cubic-bezier(0.175,0.885,0.32,1.275);position:relative;overflow:hidden;cursor:pointer;}
+  .featured-card::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(82,183,136,0.1),transparent);opacity:0;transition:opacity 0.4s;}
+  .featured-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gl),transparent);transform:scaleX(0);transition:transform 0.4s;}
+  .featured-card:hover{transform:translateY(-12px);border-color:rgba(82,183,136,0.3);box-shadow:0 25px 60px rgba(45,106,79,0.25);}
+  .featured-card:hover::before{opacity:1;}
+  .featured-card:hover::after{transform:scaleX(1);}
+  .featured-card .icon{font-size:3.5rem;margin-bottom:1.2rem;display:block;transition:transform 0.5s cubic-bezier(0.175,0.885,0.32,1.275);}
+  .featured-card:hover .icon{transform:scale(1.25) rotate(8deg);}
+  .featured-card h3{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:0.6rem;color:var(--gl);}
+  .featured-card p{color:var(--muted);font-size:0.87rem;line-height:1.65;}
+  .featured-card .price-tag{display:inline-block;margin-top:1.2rem;background:rgba(82,183,136,0.1);color:var(--gl);padding:0.35rem 1rem;border-radius:50px;font-weight:700;font-size:0.92rem;border:1px solid rgba(82,183,136,0.2);}
+
+  /* ── Why Us ── */
+  .why-us{padding:7rem 5rem;background:linear-gradient(160deg,#071a0f 0%,#0a0f0a 100%);position:relative;overflow:hidden;}
+  .why-us::after{content:'🍄';position:absolute;font-size:28rem;opacity:0.02;right:-5rem;bottom:-5rem;pointer-events:none;animation:slowSpin 50s linear infinite;}
+  .features-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:2rem;max-width:1100px;margin:0 auto;}
+  .feature-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:22px;padding:2.2rem;text-align:center;transition:all 0.5s;position:relative;overflow:hidden;}
+  .feature-card::before{content:'';position:absolute;inset:0;background:radial-gradient(circle at 50% 0%,rgba(82,183,136,0.12),transparent 60%);opacity:0;transition:opacity 0.4s;}
+  .feature-card:hover{border-color:rgba(82,183,136,0.25);transform:translateY(-10px);box-shadow:0 20px 50px rgba(45,106,79,0.2);}
+  .feature-card:hover::before{opacity:1;}
+  .feature-icon{font-size:2.8rem;margin-bottom:1.2rem;display:block;transition:transform 0.5s;}
+  .feature-card:hover .feature-icon{transform:scale(1.2) rotate(-5deg);}
+  .feature-card h3{font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:0.7rem;color:var(--gl);}
+  .feature-card p{color:var(--muted);font-size:0.87rem;line-height:1.65;}
+
+  /* ── Testimonials ── */
+  .testimonials{padding:7rem 0;background:#070c07;overflow:hidden;position:relative;}
+  .testimonials::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(82,183,136,0.2),transparent);}
+  .testimonials .section-header{padding:0 5rem;}
+  .testimonials-track{overflow:hidden;padding:1.5rem 0;cursor:grab;}
+  .testimonials-track:active{cursor:grabbing;}
+  .testimonials-inner{display:flex;gap:2rem;width:max-content;padding:0.5rem 2rem;will-change:transform;}
+  .testimonial-card{background:rgba(255,255,255,0.03);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.06);border-radius:22px;padding:2rem;min-width:320px;max-width:320px;transition:all 0.4s;position:relative;overflow:hidden;}
+  .testimonial-card::before{content:'❝';position:absolute;top:1rem;right:1.5rem;font-size:3rem;color:rgba(82,183,136,0.1);font-family:serif;line-height:1;}
+  .testimonial-card:hover{border-color:rgba(82,183,136,0.25);transform:scale(1.03);box-shadow:0 15px 40px rgba(45,106,79,0.2);}
+  .t-stars{color:var(--gold);font-size:0.9rem;margin-bottom:1rem;letter-spacing:2px;}
+  .testimonial-card p{color:rgba(255,255,255,0.75);font-size:0.92rem;line-height:1.75;font-style:italic;margin-bottom:1.3rem;}
+  .t-author{color:var(--gl);font-weight:600;font-size:0.85rem;display:flex;align-items:center;gap:0.5rem;}
+  .t-author::before{content:'';display:inline-block;width:20px;height:1px;background:var(--gl);}
+
+  @media(max-width:900px){
+    .hero{padding:7rem 1.5rem 4rem;}.hero-grid{grid-template-columns:1fr;}.hero-visual{display:none;}
+    .featured{padding:4rem 1.5rem;}.featured-grid{grid-template-columns:1fr;}
+    .why-us{padding:4rem 1.5rem;}
+    .testimonials .section-header{padding:0 1.5rem;}
+  }
+  @media(max-width:600px){
+    .hero-title{font-size:2.6rem;}.hero-btns{flex-direction:column;}.hero-btns a{text-align:center;}
+  }
+  </style>
+</head>
+<body>
+  <div id="loader"><div class="loader-mush">🍄</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="particles" id="particles"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-icon">🍄</span> Kapaleshwar Mushroom</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-text="Home" class="active">Home</a></li>
+      <li><a href="shop.html" data-text="Shop">Shop</a></li>
+      <li><a href="about.html" data-text="About">About</a></li>
+      <li><a href="contact.html" data-text="Contact">Contact</a></li>
+    </ul>
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" class="active" onclick="toggleMobileNav()">Home</a>
+    <a href="shop.html" onclick="toggleMobileNav()">Shop</a>
+    <a href="about.html" onclick="toggleMobileNav()">About</a>
+    <a href="contact.html" onclick="toggleMobileNav()">Contact</a>
+    <button class="mobile-cart-btn" onclick="toggleMobileNav();toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+  </div>
+
+  <!-- Hero -->
+  <section class="hero">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow"><span class="hero-eyebrow-dot"></span> 100% Fresh &amp; Organic</div>
+        <h1 class="hero-title">
+          <span class="word">Nature's</span>
+          <span class="word"><em>Finest</em></span><br/>
+          <span class="word">Oyster</span>
+          <span class="word"><em>Mushrooms</em></span>
+        </h1>
+        <p class="hero-sub">Farm-fresh oyster mushrooms delivered straight to your door. Grown with love, harvested with care — from our family farm to your table.</p>
+        <div class="hero-btns">
+          <a href="shop.html" class="btn-primary"><span>Shop Now 🍄</span></a>
+          <a href="about.html" class="btn-secondary">Our Story</a>
+        </div>
+        <div class="hero-badges">
+          <div class="hero-badge"><span class="hero-badge-icon">✅</span> No Pesticides</div>
+          <div class="hero-badge"><span class="hero-badge-icon">🚚</span> 24h Delivery</div>
+          <div class="hero-badge"><span class="hero-badge-icon">🌱</span> Sustainably Grown</div>
+        </div>
+      </div>
+      <div class="hero-visual">
+        <div class="glow-orb"></div>
+        <div class="hero-ring">
+          <div class="orbit"><div class="orbit-dot">🌿</div></div>
+          <div class="orbit orbit2"><div class="orbit-dot">✨</div></div>
+          <div class="orbit orbit3"><div class="orbit-dot">🍃</div></div>
+          <div class="hero-mush">🍄</div>
+        </div>
+        <div class="float-card c1">⭐ 4.9 Rating</div>
+        <div class="float-card c2">🚚 Free Delivery over $30</div>
+      </div>
+    </div>
+    <div class="scroll-hint"><div class="scroll-line"></div>Scroll</div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-item reveal"><span class="stat-num" data-target="500">0</span><span class="stat-unit">+</span><p>Happy Customers</p></div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="12">0</span><span class="stat-unit">+</span><p>Mushroom Varieties</p></div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="100">0</span><span class="stat-unit">%</span><p>Organic Grown</p></div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="48">0</span><span class="stat-unit">h</span><p>Fresh Delivery</p></div>
+  </section>
+
+  <!-- Featured -->
+  <section class="featured">
+    <div class="section-header">
+      <p class="section-tag">Top Picks</p>
+      <h2>Customer <em style="font-style:italic;color:var(--gl)">Favourites</em></h2>
+      <p class="section-sub">Our most-loved varieties, ready to ship today</p>
+    </div>
+    <div class="featured-grid">
+      <div class="featured-card reveal"><span class="icon">🍄</span><h3>Pearl Oyster</h3><p>Delicate, mild flavour. Perfect for stir-fries and soups.</p><span class="price-tag">$8.99 / 250g</span></div>
+      <div class="featured-card reveal"><span class="icon">🍄</span><h3>Golden Oyster</h3><p>Fruity, nutty aroma. A gourmet treat for any dish.</p><span class="price-tag">$11.99 / 200g</span></div>
+      <div class="featured-card reveal"><span class="icon">🍄</span><h3>King Oyster</h3><p>Thick, meaty stems. The ultimate meat substitute.</p><span class="price-tag">$14.99 / 350g</span></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem;"><a href="shop.html" class="btn-primary"><span>View All Products →</span></a></div>
+  </section>
+
+  <!-- Why Us -->
+  <section class="why-us">
+    <div class="section-header">
+      <p class="section-tag">Why Choose Us</p>
+      <h2>The <span class="highlight">Mushroom Oyste</span> Difference</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal"><span class="feature-icon">🌱</span><h3>100% Organic</h3><p>No pesticides, no chemicals. Pure natural mushroom goodness grown in controlled environments.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">🚚</span><h3>Fast Delivery</h3><p>Harvested and shipped within 24 hours to ensure maximum freshness at your door.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">💪</span><h3>Nutrient Rich</h3><p>Packed with protein, vitamins B &amp; D, antioxidants, and immune-boosting beta-glucans.</p></div>
+      <div class="feature-card reveal"><span class="feature-icon">♻️</span><h3>Eco Friendly</h3><p>Sustainable farming with minimal water usage and zero-waste packaging.</p></div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="testimonials">
+    <div class="section-header">
+      <p class="section-tag">Customer Love</p>
+      <h2>What People Are <span class="highlight">Saying</span></h2>
+    </div>
+    <div class="testimonials-track">
+      <div class="testimonials-inner" id="testimonialsInner">
+        <div class="testimonial-card"><div class="t-stars">★★★★★</div><p>"The freshest mushrooms I've ever tasted. The golden oysters are incredible in pasta!"</p><div class="t-author">Sarah M.</div></div>
+        <div class="testimonial-card"><div class="t-stars">★★★★★</div><p>"Delivered same day, perfectly packaged. King oysters are meaty and delicious!"</p><div class="t-author">James K.</div></div>
+        <div class="testimonial-card"><div class="t-stars">★★★★★</div><p>"The variety bundle was a game changer. Each variety has such a unique flavour."</p><div class="t-author">Priya R.</div></div>
+        <div class="testimonial-card"><div class="t-stars">★★★★★</div><p>"As a chef, quality matters. Kapaleshwar Mushroom is my go-to supplier!"</p><div class="t-author">Chef Marco L.</div></div>
+        <div class="testimonial-card"><div class="t-stars">★★★★★</div><p>"Absolutely love the pink oysters — stunning colour and incredible flavour!"</p><div class="t-author">Lena W.</div></div>
+        <div class="testimonial-card"><div class="t-stars">★★★★★</div><p>"Best mushrooms I've ever cooked with. The king oysters are a total game changer."</p><div class="t-author">Tom B.</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="logo"><span class="logo-icon">🍄</span> Kapaleshwar Mushroom</a>
+        <p>Growing nature's finest oyster mushrooms with passion and care since 2020.</p>
+        <div class="socials"><a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a></div>
+      </div>
+      <div class="footer-links"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-links"><h4>Products</h4><ul><li><a href="shop.html">Pearl Oyster</a></li><li><a href="shop.html">Golden Oyster</a></li><li><a href="shop.html">Pink Oyster</a></li><li><a href="shop.html">King Oyster</a></li></ul></div>
+      <div class="footer-links"><h4>Support</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Returns</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Kapaleshwar Mushroom. All rights reserved. Made with 🍄 and love.</p></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Your Cart 🛒</h3><button onclick="toggleCart()">✕</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty 🍄</p></div>
+    <div class="cart-total" id="cartTotal" style="display:none">
+      <div class="total-row"><span>Total:</span><span id="totalPrice">$0.00</span></div>
+      <button class="btn-primary checkout-btn" onclick="checkoutWhatsApp()"><span>Checkout via WhatsApp 💬</span></button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
