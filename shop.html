@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Shop – Kapaleshwar Mushroom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .shop-section { padding: 4rem 5rem 6rem; background: #070c07; }
+    .filter-bar { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 3rem; }
+    .filter-btn { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.09); color: rgba(255,255,255,0.65); padding: 0.55rem 1.4rem; border-radius: 50px; cursor: pointer; font-size: 0.88rem; font-weight: 500; transition: all 0.3s; backdrop-filter:blur(10px); }
+    .filter-btn:hover, .filter-btn.active { background: var(--green); border-color: var(--green); color: white; transform: translateY(-2px); box-shadow:0 6px 20px rgba(45,106,79,0.4); }
+    @media(max-width:900px){ .shop-section{padding:3rem 1.5rem 5rem;} .filter-bar{gap:0.6rem;} }
+    @media(max-width:600px){ .filter-btn{padding:0.45rem 1rem; font-size:0.82rem;} }
+  </style>
+</head>
+<body>
+  <div id="loader"><div class="loader-mush">🍄</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="particles" id="particles"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-icon">🍄</span> Kapaleshwar Mushroom</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-text="Home">Home</a></li>
+      <li><a href="shop.html" data-text="Shop" class="active">Shop</a></li>
+      <li><a href="about.html" data-text="About">About</a></li>
+      <li><a href="contact.html" data-text="Contact">Contact</a></li>
+    </ul>
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Home</a>
+    <a href="shop.html" class="active" onclick="toggleMobileNav()">Shop</a>
+    <a href="about.html" onclick="toggleMobileNav()">About</a>
+    <a href="contact.html" onclick="toggleMobileNav()">Contact</a>
+    <button class="mobile-cart-btn" onclick="toggleMobileNav();toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+  </div>
+
+  <div class="page-hero">
+    <div>
+      <p class="section-tag">Fresh Daily</p>
+      <h1>Our <span class="highlight">Shop</span></h1>
+      <p>Hand-picked oyster mushrooms, packed with flavour and nutrients</p>
+    </div>
+  </div>
+
+  <section class="shop-section">
+    <div class="filter-bar">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="oyster">Oyster</button>
+      <button class="filter-btn" data-filter="bundle">Bundles</button>
+      <button class="filter-btn" data-filter="sale">On Sale</button>
+    </div>
+
+    <div class="products-grid" id="productsGrid">
+
+      <div class="product-card reveal" data-cat="oyster">
+        <div class="product-badge">Best Seller</div>
+        <div class="product-img">🍄</div>
+        <div class="product-info">
+          <h3>Pearl Oyster Mushrooms</h3>
+          <p>Classic white oyster mushrooms with a delicate, mild flavour. Perfect for stir-fries and soups.</p>
+          <div class="product-meta"><div class="stars">★★★★★</div><span class="weight">250g</span></div>
+          <div class="product-footer"><span class="price">$8.99</span><button class="add-cart" onclick="addToCart(this,'Pearl Oyster',8.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="oyster">
+        <div class="product-badge new">New</div>
+        <div class="product-img golden">🍄</div>
+        <div class="product-info">
+          <h3>Golden Oyster Mushrooms</h3>
+          <p>Vibrant yellow mushrooms with a fruity, nutty aroma. A gourmet treat for any dish.</p>
+          <div class="product-meta"><div class="stars">★★★★★</div><span class="weight">200g</span></div>
+          <div class="product-footer"><span class="price">$11.99</span><button class="add-cart" onclick="addToCart(this,'Golden Oyster',11.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="oyster">
+        <div class="product-img pink">🍄</div>
+        <div class="product-info">
+          <h3>Pink Oyster Mushrooms</h3>
+          <p>Stunning pink clusters with a bold, bacon-like flavour when cooked. A visual delight.</p>
+          <div class="product-meta"><div class="stars">★★★★☆</div><span class="weight">200g</span></div>
+          <div class="product-footer"><span class="price">$12.99</span><button class="add-cart" onclick="addToCart(this,'Pink Oyster',12.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="oyster sale">
+        <div class="product-badge sale">Sale</div>
+        <div class="product-img blue">🍄</div>
+        <div class="product-info">
+          <h3>Blue Oyster Mushrooms</h3>
+          <p>Deep blue-grey caps with a rich, earthy taste. Excellent for sautéing and pasta.</p>
+          <div class="product-meta"><div class="stars">★★★★★</div><span class="weight">300g</span></div>
+          <div class="product-footer"><span class="price"><s>$13.99</s> $9.99</span><button class="add-cart" onclick="addToCart(this,'Blue Oyster',9.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="oyster">
+        <div class="product-img king">🍄</div>
+        <div class="product-info">
+          <h3>King Oyster Mushrooms</h3>
+          <p>Thick, meaty stems with a firm texture. Perfect as a meat substitute in any recipe.</p>
+          <div class="product-meta"><div class="stars">★★★★★</div><span class="weight">350g</span></div>
+          <div class="product-footer"><span class="price">$14.99</span><button class="add-cart" onclick="addToCart(this,'King Oyster',14.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="bundle">
+        <div class="product-badge bundle-tag">Bundle</div>
+        <div class="product-img">🍄🍄🍄</div>
+        <div class="product-info">
+          <h3>Variety Bundle Pack</h3>
+          <p>Try them all! A mix of Pearl, Golden, and Pink oyster mushrooms in one pack.</p>
+          <div class="product-meta"><div class="stars">★★★★★</div><span class="weight">600g</span></div>
+          <div class="product-footer"><span class="price">$24.99</span><button class="add-cart" onclick="addToCart(this,'Variety Bundle',24.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="bundle sale">
+        <div class="product-badge sale">Sale</div>
+        <div class="product-img">🍄🍄</div>
+        <div class="product-info">
+          <h3>Twin Pack – Pearl &amp; Golden</h3>
+          <p>Our two most popular varieties together at a special price. Great for gifting.</p>
+          <div class="product-meta"><div class="stars">★★★★★</div><span class="weight">450g</span></div>
+          <div class="product-footer"><span class="price"><s>$22.99</s> $17.99</span><button class="add-cart" onclick="addToCart(this,'Twin Pack',17.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+      <div class="product-card reveal" data-cat="oyster">
+        <div class="product-badge new">New</div>
+        <div class="product-img" style="background:linear-gradient(135deg,rgba(150,50,200,0.2),rgba(200,100,255,0.08))">🍄</div>
+        <div class="product-info">
+          <h3>Phoenix Oyster Mushrooms</h3>
+          <p>Mild, anise-like flavour with a velvety texture. Grows in warm climates.</p>
+          <div class="product-meta"><div class="stars">★★★★☆</div><span class="weight">250g</span></div>
+          <div class="product-footer"><span class="price">$10.99</span><button class="add-cart" onclick="addToCart(this,'Phoenix Oyster',10.99)">Add to Cart</button></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Newsletter -->
+  <section class="newsletter">
+    <div class="newsletter-content">
+      <h2>Get 10% Off Your First Order</h2>
+      <p>Subscribe for exclusive deals, recipes, and mushroom growing tips.</p>
+      <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+        <input type="email" placeholder="Enter your email address" required/>
+        <button type="submit">Subscribe</button>
+      </form>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">🍄 Kapaleshwar Mushroom</a>
+        <p>Growing nature's finest oyster mushrooms with passion and care since 2020.</p>
+        <div class="socials"><a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a></div>
+      </div>
+      <div class="footer-links"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-links"><h4>Products</h4><ul><li><a href="shop.html">Pearl Oyster</a></li><li><a href="shop.html">Golden Oyster</a></li><li><a href="shop.html">Pink Oyster</a></li><li><a href="shop.html">King Oyster</a></li></ul></div>
+      <div class="footer-links"><h4>Support</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Returns</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Kapaleshwar Mushroom. All rights reserved. Made with 🍄 and love.</p></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Your Cart 🛒</h3><button onclick="toggleCart()">✕</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty</p></div>
+    <div class="cart-total" id="cartTotal" style="display:none">
+      <div class="total-row"><span>Total:</span><span id="totalPrice">$0.00</span></div>
+      <button class="btn-primary checkout-btn" onclick="checkoutWhatsApp()"><span>Checkout via WhatsApp 💬</span></button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+  <script>
+    // Filter logic
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.product-card').forEach(card => {
+          const cat = card.dataset.cat || '';
+          const show = filter === 'all' || cat.includes(filter);
+          card.style.display = show ? '' : 'none';
+          if (show) { card.classList.remove('visible'); setTimeout(() => card.classList.add('visible'), 50); }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
