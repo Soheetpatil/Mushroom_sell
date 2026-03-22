@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact – Kapaleshwar Mushroom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    .contact-section { padding: 5rem 5rem 7rem; background: #111; }
+    .contact-wrap { display: grid; grid-template-columns: 1fr 1.4fr; gap: 5rem; max-width: 1100px; margin: 0 auto; align-items: start; }
+
+    /* Info side */
+    .contact-info-block h2 { font-family:'Playfair Display',serif; font-size:2rem; margin-bottom:1rem; }
+    .contact-info-block > p { color:rgba(255,255,255,0.6); font-size:0.97rem; line-height:1.7; margin-bottom:2.5rem; }
+    .info-card { display:flex; gap:1.2rem; align-items:flex-start; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:1.3rem 1.5rem; margin-bottom:1.2rem; transition:all 0.3s; }
+    .info-card:hover { background:rgba(82,183,136,0.08); border-color:rgba(82,183,136,0.25); transform:translateX(6px); }
+    .info-icon { font-size:1.8rem; flex-shrink:0; }
+    .info-card h4 { color:var(--green-light); font-size:0.82rem; text-transform:uppercase; letter-spacing:1.5px; margin-bottom:0.3rem; }
+    .info-card p { color:rgba(255,255,255,0.7); font-size:0.92rem; }
+    .wa-direct { display:flex; align-items:center; gap:0.8rem; background:linear-gradient(135deg,#25d366,#128c7e); color:white; text-decoration:none; padding:1rem 1.5rem; border-radius:14px; font-weight:600; font-size:0.95rem; margin-top:2rem; transition:all 0.3s; box-shadow:0 4px 20px rgba(37,211,102,0.3); }
+    .wa-direct:hover { transform:translateY(-3px); box-shadow:0 8px 30px rgba(37,211,102,0.5); }
+    .wa-direct span { font-size:1.5rem; }
+
+    /* Form side */
+    .contact-form-block { background:linear-gradient(145deg,#1c1c1c,#222); border-radius:24px; padding:2.5rem; border:1px solid rgba(255,255,255,0.07); }
+    .contact-form-block h3 { font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:0.5rem; }
+    .contact-form-block > p { color:rgba(255,255,255,0.5); font-size:0.88rem; margin-bottom:2rem; }
+    .form-row { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .form-group { display:flex; flex-direction:column; gap:0.4rem; margin-bottom:1.2rem; }
+    .form-group label { font-size:0.82rem; font-weight:600; color:rgba(255,255,255,0.6); text-transform:uppercase; letter-spacing:1px; }
+    .form-group input, .form-group textarea, .form-group select {
+      background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.1);
+      border-radius:12px; padding:0.9rem 1.1rem; color:white;
+      font-size:0.93rem; font-family:'Inter',sans-serif; outline:none;
+      transition:all 0.3s;
+    }
+    .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+      border-color:var(--green-light); background:rgba(82,183,136,0.06);
+      box-shadow:0 0 0 3px rgba(82,183,136,0.1);
+    }
+    .form-group input::placeholder, .form-group textarea::placeholder { color:rgba(255,255,255,0.3); }
+    .form-group select option { background:#1c1c1c; }
+    .form-group textarea { resize:vertical; min-height:130px; }
+    .submit-btn { width:100%; padding:1rem; font-size:1rem; border-radius:14px; display:flex; align-items:center; justify-content:center; gap:0.6rem; }
+    .submit-btn .wa-icon { font-size:1.2rem; }
+
+    /* Map placeholder */
+    .map-section { padding: 0 5rem 6rem; background: #111; }
+    .map-box { max-width:1100px; margin:0 auto; border-radius:20px; overflow:hidden; border:1px solid rgba(255,255,255,0.07); height:300px; background:linear-gradient(135deg,rgba(45,106,79,0.2),rgba(82,183,136,0.08)); display:flex; align-items:center; justify-content:center; flex-direction:column; gap:1rem; }
+    .map-box span { font-size:4rem; animation:mushBig 4s ease-in-out infinite; }
+    @keyframes mushBig { 0%,100%{transform:rotate(-3deg);} 50%{transform:translateY(-10px) rotate(3deg);} }
+    .map-box p { color:rgba(255,255,255,0.5); font-size:0.95rem; }
+
+    /* FAQ */
+    .faq { padding: 6rem 5rem; background: linear-gradient(135deg,#0d2b1e,#0e0e0e); }
+    .faq-list { max-width: 750px; margin: 0 auto; }
+    .faq-item { border-bottom: 1px solid rgba(255,255,255,0.07); }
+    .faq-q { width:100%; background:none; border:none; color:white; text-align:left; padding:1.3rem 0; font-size:1rem; font-weight:600; cursor:pointer; display:flex; justify-content:space-between; align-items:center; transition:color 0.3s; font-family:'Inter',sans-serif; }
+    .faq-q:hover { color:var(--green-light); }
+    .faq-q .arrow { font-size:1.2rem; transition:transform 0.3s; }
+    .faq-q.open { color:var(--green-light); }
+    .faq-q.open .arrow { transform:rotate(180deg); }
+    .faq-a { max-height:0; overflow:hidden; transition:max-height 0.4s ease, padding 0.3s; }
+    .faq-a.open { max-height:200px; padding-bottom:1.2rem; }
+    .faq-a p { color:rgba(255,255,255,0.6); font-size:0.92rem; line-height:1.7; }
+
+    @media(max-width:900px){
+      .contact-section{padding:4rem 2rem 5rem;}
+      .contact-wrap{grid-template-columns:1fr; gap:3rem;}
+      .form-row{grid-template-columns:1fr;}
+      .map-section{padding:0 2rem 4rem;}
+      .faq{padding:4rem 2rem;}
+    }
+    @media(max-width:600px){
+      .contact-form-block{padding:1.5rem;}
+      .wa-direct{font-size:0.88rem; padding:0.85rem 1.2rem;}
+    }
+  </style>
+</head>
+<body>
+  <div id="loader"><div class="loader-mush">🍄</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="particles" id="particles"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-icon">🍄</span> Kapaleshwar Mushroom</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-text="Home">Home</a></li>
+      <li><a href="shop.html" data-text="Shop">Shop</a></li>
+      <li><a href="about.html" data-text="About">About</a></li>
+      <li><a href="contact.html" data-text="Contact" class="active">Contact</a></li>
+    </ul>
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Home</a>
+    <a href="shop.html" onclick="toggleMobileNav()">Shop</a>
+    <a href="about.html" onclick="toggleMobileNav()">About</a>
+    <a href="contact.html" class="active" onclick="toggleMobileNav()">Contact</a>
+    <button class="mobile-cart-btn" onclick="toggleMobileNav();toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+  </div>
+
+  <div class="page-hero">
+    <div>
+      <p class="section-tag">We'd Love to Hear From You</p>
+      <h1>Get In <span class="highlight">Touch</span></h1>
+      <p>Questions, orders, or just want to chat about mushrooms? We're here.</p>
+    </div>
+  </div>
+
+  <section class="contact-section">
+    <div class="contact-wrap">
+
+      <!-- Info -->
+      <div class="contact-info-block reveal-left">
+        <h2>Let's <span class="highlight">Connect</span></h2>
+        <p>Whether you have a question about our products, need help with an order, or want to discuss a bulk purchase — we're always happy to help.</p>
+
+        <div class="info-card">
+          <span class="info-icon">📍</span>
+          <div><h4>Our Farm</h4><p>Ganesh Chowk, Cidco</p></div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">📞</span>
+          <div><h4>Phone</h4><p>+91 80872 74564 ,<br> +91 83291 84307
+          </p></div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">✉️</span>
+          <div><h4>Email</h4><p>tempgmail.com</p></div>
+        </div>
+        <div class="info-card">
+          <span class="info-icon">🕐</span>
+          <div><h4>Hours</h4><p>Mon–Sat: 8am – 6pm<br/>Sunday: 10am – 4pm</p></div>
+        </div>
+
+        <a href="https://wa.me/9798990420" target="_blank" class="wa-direct">
+          <span>💬</span> Chat on WhatsApp Directly
+        </a>
+      </div>
+
+      <!-- Form -->
+      <div class="contact-form-block reveal-right">
+        <h3>Send Us a Message</h3>
+        <p>Fill in the form and we'll forward it straight to our WhatsApp.</p>
+        <form onsubmit="sendMessage(event)">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Your Name</label>
+              <input type="text" id="contactName" placeholder="John Doe" required/>
+            </div>
+            <div class="form-group">
+              <label>Your Email</label>
+              <input type="email" id="contactEmail" placeholder="john@email.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Subject</label>
+            <select id="contactSubject">
+              <option value="Order Inquiry">Order Inquiry</option>
+              <option value="Product Question">Product Question</option>
+              <option value="Bulk Purchase">Bulk Purchase</option>
+              <option value="Delivery Issue">Delivery Issue</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>Your Message</label>
+            <textarea id="contactMessage" placeholder="Tell us how we can help..." required></textarea>
+          </div>
+          <button type="submit" class="btn-primary submit-btn">
+            <span class="wa-icon">💬</span> Send via WhatsApp
+          </button>
+        </form>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Map placeholder -->
+  <div class="map-section">
+    <div class="map-box">
+      <span>📍</span>
+      <p>123 Mushroom Lane, Forest Valley, CA 94102</p>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <section class="faq">
+    <div class="section-header">
+      <p class="section-tag">Quick Answers</p>
+      <h2>Frequently Asked <span class="highlight">Questions</span></h2>
+    </div>
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How fresh are your mushrooms? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>All our mushrooms are harvested within 24 hours of your order and shipped immediately to ensure maximum freshness when they arrive at your door.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Do you offer bulk or wholesale orders? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Yes! We offer special pricing for restaurants, grocery stores, and bulk buyers. Contact us via WhatsApp or select "Bulk Purchase" in the form above.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">How should I store my mushrooms? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Store in a paper bag in the refrigerator. Avoid plastic bags as they trap moisture. Mushrooms stay fresh for 5–7 days when stored correctly.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">What areas do you deliver to? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>We currently deliver nationwide. Same-day delivery is available in select cities. Enter your zip code at checkout to see available delivery options.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Are your mushrooms certified organic? <span class="arrow">▼</span></button>
+        <div class="faq-a"><p>Yes, all our mushrooms are grown without pesticides or synthetic chemicals. We are in the process of obtaining full USDA Organic certification.</p></div>
+      </div>
+    </div>
+  </section>
+
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">🍄 Kapaleshwar Mushroom</a>
+        <p>Growing nature's finest oyster mushrooms with passion and care since 2020.</p>
+        <div class="socials"><a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a></div>
+      </div>
+      <div class="footer-links"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-links"><h4>Products</h4><ul><li><a href="shop.html">Pearl Oyster</a></li><li><a href="shop.html">Golden Oyster</a></li><li><a href="shop.html">Pink Oyster</a></li><li><a href="shop.html">King Oyster</a></li></ul></div>
+      <div class="footer-links"><h4>Support</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Returns</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Kapaleshwar Mushroom. All rights reserved. Made with 🍄 and love.</p></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Your Cart 🛒</h3><button onclick="toggleCart()">✕</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty</p></div>
+    <div class="cart-total" id="cartTotal" style="display:none">
+      <div class="total-row"><span>Total:</span><span id="totalPrice">$0.00</span></div>
+      <button class="btn-primary checkout-btn" onclick="checkoutWhatsApp()"><span>Checkout via WhatsApp 💬</span></button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+  <script>
+    function toggleFaq(btn) {
+      const answer = btn.nextElementSibling;
+      const isOpen = btn.classList.contains('open');
+      document.querySelectorAll('.faq-q').forEach(b => { b.classList.remove('open'); b.nextElementSibling.classList.remove('open'); });
+      if (!isOpen) { btn.classList.add('open'); answer.classList.add('open'); }
+    }
+  </script>
+</body>
+</html>
