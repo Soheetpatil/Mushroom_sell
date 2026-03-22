@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About – Kapaleshwar Mushroom</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+  <style>
+    /* Story section */
+    .story { padding: 6rem 5rem; background: #111; }
+    .story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .story-visual { position: relative; display: flex; align-items: center; justify-content: center; }
+    .story-circle { width: 340px; height: 340px; border-radius: 50%; background: radial-gradient(circle, rgba(45,106,79,0.3), rgba(82,183,136,0.1)); border: 2px solid rgba(82,183,136,0.25); display: flex; align-items: center; justify-content: center; font-size: 8rem; animation: mushBig 5s ease-in-out infinite; position: relative; }
+    @keyframes mushBig { 0%,100%{transform:rotate(-3deg);} 50%{transform:translateY(-15px) rotate(3deg);} }
+    .story-badge { position: absolute; background: var(--green); color: white; padding: 0.6rem 1.2rem; border-radius: 50px; font-weight: 700; font-size: 0.85rem; white-space: nowrap; box-shadow: 0 4px 20px rgba(45,106,79,0.4); }
+    .story-badge.b1 { top: 10%; right: -5%; animation: badgeFloat 3s ease-in-out infinite; }
+    .story-badge.b2 { bottom: 15%; left: -8%; animation: badgeFloat 3s ease-in-out 1.5s infinite; }
+    @keyframes badgeFloat { 0%,100%{transform:translateY(0);} 50%{transform:translateY(-8px);} }
+    .story-text h2 { font-family:'Playfair Display',serif; font-size:clamp(2rem,3.5vw,2.8rem); font-weight:700; margin-bottom:1.5rem; line-height:1.2; }
+    .story-text p { color:rgba(255,255,255,0.65); font-size:0.97rem; line-height:1.8; margin-bottom:1.2rem; }
+
+    /* Timeline */
+    .timeline-section { padding: 6rem 5rem; background: linear-gradient(135deg,#0d2b1e,#0e0e0e); }
+    .timeline { max-width: 750px; margin: 0 auto; position: relative; }
+    .timeline::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:2px; background:linear-gradient(to bottom,transparent,var(--green-light),transparent); transform:translateX(-50%); }
+    .tl-item { display: flex; gap: 2rem; margin-bottom: 3rem; align-items: flex-start; }
+    .tl-item:nth-child(even) { flex-direction: row-reverse; }
+    .tl-item:nth-child(even) .tl-content { text-align: right; }
+    .tl-dot { width: 48px; height: 48px; border-radius: 50%; background: var(--green); border: 3px solid var(--green-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; position: relative; z-index: 1; box-shadow: 0 0 20px rgba(82,183,136,0.4); animation: dotPulse 2s ease-in-out infinite; }
+    @keyframes dotPulse { 0%,100%{box-shadow:0 0 20px rgba(82,183,136,0.4);} 50%{box-shadow:0 0 35px rgba(82,183,136,0.7);} }
+    .tl-content { flex: 1; background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:16px; padding:1.5rem; transition:all 0.3s; }
+    .tl-content:hover { background:rgba(82,183,136,0.08); border-color:rgba(82,183,136,0.25); transform:scale(1.02); }
+    .tl-year { color:var(--green-light); font-weight:700; font-size:0.82rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:0.4rem; }
+    .tl-content h3 { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:0.5rem; }
+    .tl-content p { color:rgba(255,255,255,0.6); font-size:0.88rem; line-height:1.6; }
+
+    /* Team */
+    .team { padding: 6rem 5rem; background: #111; }
+    .team-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr)); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+    .team-card { background:linear-gradient(145deg,#1c1c1c,#222); border-radius:20px; padding:2rem; text-align:center; border:1px solid rgba(255,255,255,0.05); transition:all 0.4s; }
+    .team-card:hover { transform:translateY(-10px); border-color:rgba(82,183,136,0.3); box-shadow:0 20px 50px rgba(45,106,79,0.2); }
+    .team-avatar { font-size:4rem; margin-bottom:1rem; display:block; animation:iconPulse 4s ease-in-out infinite; }
+    @keyframes iconPulse { 0%,100%{transform:scale(1);} 50%{transform:scale(1.08);} }
+    .team-card h3 { font-family:'Playfair Display',serif; font-size:1.1rem; margin-bottom:0.3rem; }
+    .team-card .role { color:var(--green-light); font-size:0.82rem; font-weight:600; text-transform:uppercase; letter-spacing:1px; margin-bottom:0.8rem; }
+    .team-card p { color:rgba(255,255,255,0.55); font-size:0.87rem; line-height:1.6; }
+
+    /* Values */
+    .values { padding: 6rem 5rem; background: linear-gradient(135deg,#0a1a10,#0e0e0e); }
+    .values-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; max-width: 1000px; margin: 0 auto; }
+    .value-card { padding: 2.5rem 2rem; border-radius: 20px; border: 1px solid rgba(255,255,255,0.06); background: rgba(255,255,255,0.03); text-align: center; transition: all 0.4s; position: relative; overflow: hidden; }
+    .value-card::before { content:''; position:absolute; inset:0; background:linear-gradient(135deg,rgba(82,183,136,0.1),transparent); opacity:0; transition:opacity 0.4s; }
+    .value-card:hover { transform:translateY(-8px); border-color:rgba(82,183,136,0.3); }
+    .value-card:hover::before { opacity:1; }
+    .value-num { font-family:'Playfair Display',serif; font-size:3.5rem; font-weight:900; color:rgba(82,183,136,0.2); line-height:1; margin-bottom:0.5rem; }
+    .value-card h3 { font-family:'Playfair Display',serif; font-size:1.2rem; color:var(--green-light); margin-bottom:0.8rem; }
+    .value-card p { color:rgba(255,255,255,0.6); font-size:0.88rem; line-height:1.6; }
+
+    @media(max-width:900px){
+      .story{padding:4rem 2rem;} .story-grid{grid-template-columns:1fr;} .story-visual{display:none;}
+      .timeline-section{padding:4rem 2rem;} .timeline::before{left:24px;} .tl-item{flex-direction:row!important;} .tl-item .tl-content{text-align:left!important;}
+      .team{padding:4rem 2rem;} .values{padding:4rem 2rem;} .values-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:600px){
+      .tl-dot{width:36px;height:36px;font-size:1rem;}
+      .team-grid{grid-template-columns:1fr;}
+    }
+  </style>
+</head>
+<body>
+  <div id="loader"><div class="loader-mush">🍄</div><div class="loader-bar"><div class="loader-fill"></div></div></div>
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+  <div class="particles" id="particles"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="index.html" class="logo"><span class="logo-icon">🍄</span> Kapaleshwar Mushroom</a>
+    <ul class="nav-links">
+      <li><a href="index.html" data-text="Home">Home</a></li>
+      <li><a href="shop.html" data-text="Shop">Shop</a></li>
+      <li><a href="about.html" data-text="About" class="active">About</a></li>
+      <li><a href="contact.html" data-text="Contact">Contact</a></li>
+    </ul>
+    <button class="cart-btn" onclick="toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+    <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+  <div class="mobile-nav" id="mobileNav">
+    <a href="index.html" onclick="toggleMobileNav()">Home</a>
+    <a href="shop.html" onclick="toggleMobileNav()">Shop</a>
+    <a href="about.html" class="active" onclick="toggleMobileNav()">About</a>
+    <a href="contact.html" onclick="toggleMobileNav()">Contact</a>
+    <button class="mobile-cart-btn" onclick="toggleMobileNav();toggleCart()">🛒 Cart <span class="cart-count">0</span></button>
+  </div>
+
+  <div class="page-hero">
+    <div>
+      <p class="section-tag">Our Story</p>
+      <h1>About <span class="highlight">Us</span></h1>
+      <p>Passionate farmers growing the world's finest oyster mushrooms</p>
+    </div>
+  </div>
+
+  <!-- Story -->
+  <section class="story">
+    <div class="story-grid">
+      <div class="story-visual">
+        <div class="story-circle">🍄
+          <div class="story-badge b1">🌱 Est. 2020</div>
+          <div class="story-badge b2">🏆 Award Winning</div>
+        </div>
+      </div>
+      <div class="story-text reveal-right">
+        <h2>From a Small Farm to <span class="highlight">Your Table</span></h2>
+        <p>It all started in 2020 when our founder, inspired by a trip through the forests of the Pacific Northwest, decided to bring the magic of wild mushrooms to everyday kitchens.</p>
+        <p>What began as a small hobby farm in a garage has grown into a full-scale organic mushroom operation, supplying hundreds of families, restaurants, and chefs across the country.</p>
+        <p>Every mushroom we grow is a labour of love — carefully cultivated in climate-controlled environments, harvested by hand, and shipped within 24 hours to ensure you get the freshest product possible.</p>
+        <a href="shop.html" class="btn-primary" style="margin-top:1rem;">Shop Our Mushrooms</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats">
+    <div class="stat-item reveal"><span class="stat-num" data-target="500">0</span><span class="stat-unit">+</span><p>Happy Customers</p></div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="12">0</span><span class="stat-unit">+</span><p>Mushroom Varieties</p></div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="100">0</span><span class="stat-unit">%</span><p>Organic Grown</p></div>
+    <div class="stat-item reveal"><span class="stat-num" data-target="4">0</span><span class="stat-unit">+</span><p>Years of Growing</p></div>
+  </section>
+
+  <!-- Timeline -->
+  <section class="timeline-section">
+    <div class="section-header">
+      <p class="section-tag">Our Journey</p>
+      <h2>How We <span class="highlight">Grew</span></h2>
+    </div>
+    <div class="timeline">
+      <div class="tl-item reveal">
+        <div class="tl-dot">🌱</div>
+        <div class="tl-content">
+          <div class="tl-year">2020</div>
+          <h3>The Beginning</h3>
+          <p>Started growing Pearl Oyster mushrooms in a small garage setup with just 10 grow bags.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">🏠</div>
+        <div class="tl-content">
+          <div class="tl-year">2021</div>
+          <h3>First Farm Space</h3>
+          <p>Moved to a dedicated 500 sq ft grow room and expanded to 5 varieties including Golden and Pink Oyster.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">🚚</div>
+        <div class="tl-content">
+          <div class="tl-year">2022</div>
+          <h3>Online Store Launch</h3>
+          <p>Launched our online store and began delivering fresh mushrooms directly to customers' doors.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">🏆</div>
+        <div class="tl-content">
+          <div class="tl-year">2023</div>
+          <h3>Award Winning</h3>
+          <p>Won the Regional Organic Produce Award and partnered with 20+ local restaurants.</p>
+        </div>
+      </div>
+      <div class="tl-item reveal">
+        <div class="tl-dot">🌍</div>
+        <div class="tl-content">
+          <div class="tl-year">2024–Now</div>
+          <h3>Growing Nationwide</h3>
+          <p>Expanded to a 3,000 sq ft facility, shipping to customers across the entire country.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Values -->
+  <section class="values">
+    <div class="section-header">
+      <p class="section-tag">What We Stand For</p>
+      <h2>Our <span class="highlight">Values</span></h2>
+    </div>
+    <div class="values-grid">
+      <div class="value-card reveal"><div class="value-num">01</div><h3>Quality First</h3><p>We never compromise on quality. Every batch is inspected before it leaves our farm.</p></div>
+      <div class="value-card reveal"><div class="value-num">02</div><h3>Sustainability</h3><p>Our growing methods use 90% less water than traditional farming and produce zero waste.</p></div>
+      <div class="value-card reveal"><div class="value-num">03</div><h3>Community</h3><p>We support local communities by sourcing materials locally and employing local staff.</p></div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team">
+    <div class="section-header">
+      <p class="section-tag">The People</p>
+      <h2>Meet Our <span class="highlight">Team</span></h2>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal"><span class="team-avatar">👨‍🌾</span><h3>Alex Rivera</h3><div class="role">Founder & Head Grower</div><p>15 years of mycology experience. Alex's passion for fungi started in the forests of Oregon.</p></div>
+      <div class="team-card reveal"><span class="team-avatar">👩‍🔬</span><h3>Maya Chen</h3><div class="role">Mycologist</div><p>PhD in Mycology from UC Davis. Maya ensures every strain is healthy and optimised for flavour.</p></div>
+      <div class="team-card reveal"><span class="team-avatar">👨‍🍳</span><h3>Carlos Mendez</h3><div class="role">Culinary Advisor</div><p>Former Michelin-star chef who helps us understand what chefs and home cooks really need.</p></div>
+      <div class="team-card reveal"><span class="team-avatar">👩‍💼</span><h3>Priya Sharma</h3><div class="role">Operations Manager</div><p>Keeps everything running smoothly from harvest to your doorstep, every single day.</p></div>
+    </div>
+  </section>
+
+
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="index.html" class="logo">🍄 Kapaleshwar Mushroom</a>
+        <p>Growing nature's finest oyster mushrooms with passion and care since 2020.</p>
+        <div class="socials"><a href="#">📘</a><a href="#">📸</a><a href="#">🐦</a><a href="#">▶️</a></div>
+      </div>
+      <div class="footer-links"><h4>Pages</h4><ul><li><a href="index.html">Home</a></li><li><a href="shop.html">Shop</a></li><li><a href="about.html">About</a></li><li><a href="contact.html">Contact</a></li></ul></div>
+      <div class="footer-links"><h4>Products</h4><ul><li><a href="shop.html">Pearl Oyster</a></li><li><a href="shop.html">Golden Oyster</a></li><li><a href="shop.html">Pink Oyster</a></li><li><a href="shop.html">King Oyster</a></li></ul></div>
+      <div class="footer-links"><h4>Support</h4><ul><li><a href="#">FAQ</a></li><li><a href="#">Shipping Policy</a></li><li><a href="#">Returns</a></li><li><a href="contact.html">Contact Us</a></li></ul></div>
+    </div>
+    <div class="footer-bottom"><p>© 2026 Kapaleshwar Mushroom. All rights reserved. Made with 🍄 and love.</p></div>
+  </footer>
+
+  <div class="cart-overlay" id="cartOverlay" onclick="toggleCart()"></div>
+  <div class="cart-sidebar" id="cartSidebar">
+    <div class="cart-header"><h3>Your Cart 🛒</h3><button onclick="toggleCart()">✕</button></div>
+    <div class="cart-items" id="cartItems"><p class="empty-cart">Your cart is empty</p></div>
+    <div class="cart-total" id="cartTotal" style="display:none">
+      <div class="total-row"><span>Total:</span><span id="totalPrice">$0.00</span></div>
+      <button class="btn-primary checkout-btn" onclick="checkoutWhatsApp()"><span>Checkout via WhatsApp 💬</span></button>
+    </div>
+  </div>
+  <div class="toast" id="toast"></div>
+  <script src="script.js"></script>
+</body>
+</html>
